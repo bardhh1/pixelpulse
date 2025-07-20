@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Pixel Pulse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#2c5aa0',
+                            600: '#1e3f7a',
+                            700: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .pixel-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .animated-gradient-bg {
+            background: linear-gradient(270deg, #1e3a8a, #2563eb, #38bdf8, #0ea5e9, #1e3a8a);
+            background-size: 400% 400%;
+            animation: gradientRandomMove 16s ease-in-out infinite;
+            opacity: 0.22;
+        }
+        @keyframes gradientRandomMove {
+            0% { background-position: 0% 50%; }
+            15% { background-position: 30% 70%; }
+            30% { background-position: 70% 30%; }
+            45% { background-position: 100% 50%; }
+            60% { background-position: 70% 70%; }
+            75% { background-position: 30% 30%; }
+            100% { background-position: 0% 50%; }
+        }
+        .glass-navbar {
+            background: rgba(255,255,255,0.25);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border-radius: 0 0 1.5rem 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+        .glass-btn {
+            background: rgba(44, 90, 160, 0.18); /* blue tint */
+            box-shadow: 0 4px 24px 0 rgba(44, 90, 160, 0.10);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(44, 90, 160, 0.25);
+            transition: background 0.2s, box-shadow 0.2s, border 0.2s;
+        }
+        .glass-btn:hover, .glass-btn:focus {
+            background: rgba(44, 90, 160, 0.32);
+            box-shadow: 0 6px 32px 0 rgba(44, 90, 160, 0.18);
+            border: 1.5px solid rgba(44, 90, 160, 0.35);
+        }
+        .glass-card {
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+            backdrop-filter: blur(14px) saturate(180%);
+            -webkit-backdrop-filter: blur(14px) saturate(180%);
+            border: 1.5px solid rgba(255,255,255,0.18);
+        }
+        .glass-icon {
+            background: rgba(10, 20, 40, 0.22); /* very dark navy */
+            box-shadow: 0 4px 16px 0 rgba(10, 20, 40, 0.10);
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border: 1.5px solid rgba(10, 20, 40, 0.18);
+            border-radius: 1rem;
+        }
+        .glass-dropdown {
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1.5px solid rgba(255,255,255,0.18);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            opacity: 1;
+        }
+        .faq-question {
+            transition: background 0.3s;
+        }
+        .faq-question:hover {
+            background: rgba(44, 90, 160, 0.10); /* subtle blue glass hover */
+        }
+        .glass-input {
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.08);
+            backdrop-filter: blur(8px) saturate(180%);
+            -webkit-backdrop-filter: blur(8px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.18);
+            transition: background 0.2s, box-shadow 0.2s, border 0.2s;
+        }
+        .glass-input:focus {
+            background: rgba(255,255,255,0.32);
+            border: 1.5px solid rgba(44, 90, 160, 0.25);
+            box-shadow: 0 4px 16px 0 rgba(44, 90, 160, 0.10);
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-50">
+    <div class="animated-gradient-bg fixed inset-0 w-full h-full z-0"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-navbar border-b border-white/30" aria-label="Main navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <img src="img/1-removebg-preview.png" alt="Pixel Pulse Logo" class="h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 lg:h-72 lg:w-72 xl:h-80 xl:w-80">
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="nav-link glass-btn text-gray-700 hover:text-primary-600 font-medium px-5 py-2 rounded-xl shadow-md transition-all duration-200">Home</a>
+                        <a href="about.html" class="nav-link glass-btn text-gray-700 hover:text-primary-600 font-medium px-5 py-2 rounded-xl shadow-md transition-all duration-200">About</a>
+                        <a href="projects.html" class="nav-link glass-btn text-gray-700 hover:text-primary-600 font-medium px-5 py-2 rounded-xl shadow-md transition-all duration-200">Projects</a>
+                        <a href="contact.html" class="nav-link glass-btn text-primary-600 font-medium border-b-2 border-primary-600 px-5 py-2 rounded-xl shadow-md transition-all duration-200">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden flex items-center relative">
+                    <button class="hamburger text-gray-700 hover:text-primary-600 focus:outline-none p-3" aria-label="Open menu" aria-controls="mobile-dropdown" aria-expanded="false">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                    <div id="mobile-dropdown" class="absolute right-0 top-16 bg-white rounded-xl shadow-lg py-4 flex flex-col items-stretch space-y-2 text-lg font-semibold text-primary-700 opacity-0 pointer-events-none transition-all duration-200 z-50">
+                        <a href="index.html" class="nav-link px-6 py-3 rounded-xl">Home</a>
+                        <a href="about.html" class="nav-link px-6 py-3 rounded-xl">About</a>
+                        <a href="projects.html" class="nav-link px-6 py-3 rounded-xl">Projects</a>
+                        <a href="contact.html" class="nav-link px-6 py-3 rounded-xl">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">Get in Touch</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Ready to start your next project? Let's discuss how we can help bring your vision to life.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Form -->
+                <div class="space-y-8 glass-card p-8 rounded-2xl">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Send us a Message</h2>
+                        <p class="text-gray-600">Fill out the form below and we'll get back to you within 24 hours.</p>
+                    </div>
+                    <form class="space-y-6" id="contactForm">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                                <input type="text" id="name" name="name" required class="form-input glass-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none transition-all duration-200">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                                <input type="email" id="email" name="email" required class="form-input glass-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none transition-all duration-200">
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input glass-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none transition-all duration-200">
+                            </div>
+                            <div>
+                                <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
+                                <input type="text" id="company" name="company" class="form-input glass-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none transition-all duration-200">
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="project-type" class="block text-sm font-medium text-gray-700 mb-2">Project Type</label>
+                                <select id="project-type" name="project-type" class="form-input glass-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none transition-all duration-200">
+                                    <option value="">Select a project type</option>
+                                    <option value="website">Website Development</option>
+                                    <option value="ecommerce">E-commerce Website</option>
+                                    <option value="webapp">Web Application</option>
+                                    <option value="redesign">Website Redesign</option>
+                                    <option value="maintenance">Maintenance & Support</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="budget" class="block text-sm font-medium text-gray-700 mb-2">Budget Range</label>
+                                <select id="budget" name="budget" class="form-input glass-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none transition-all duration-200">
+                                    <option value="">Select budget range</option>
+                                    <option value="350-700">350 - 700 €</option>
+                                    <option value="700-1200">700 - 1,200 €</option>
+                                    <option value="1200-2000">1,200 - 2,000 €</option>
+                                    <option value="2000-3000">2,000 - 3,000 €</option>
+                                    <option value="over-3000">Over 3,000 €</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Project Details *</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Tell us about your project, goals, and any specific requirements..." required class="form-input glass-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none transition-all duration-200 resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full glass-btn text-primary-600 font-semibold py-4 px-8 rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200">
+                            Send Message
+                            <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-8 glass-card p-8 rounded-2xl">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Let's Connect</h2>
+                        <p class="text-gray-600">We'd love to hear from you and discuss how we can help with your next project.</p>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 glass-icon flex items-center justify-center flex-shrink-0 mb-0">
+                                <i class="fas fa-envelope text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Email</h3>
+                                <p class="text-primary-600 font-medium">pixelpulseks@gmail.com</p>
+                                <p class="text-gray-600 text-sm">We typically respond within 24 hours</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 glass-icon flex items-center justify-center flex-shrink-0 mb-0">
+                                <i class="fas fa-phone text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Phone</h3>
+                                <p class="text-primary-600 font-medium">+383 45 259 373</p>
+                                <p class="text-gray-600 text-sm">Available Mon-Fri, 9AM-6PM EST</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-6 border-t border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 glass-icon flex items-center justify-center rounded-xl hover:bg-primary-600 hover:text-white transition-all duration-200 text-white">
+                                <i class="fab fa-linkedin-in text-lg"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 glass-icon flex items-center justify-center rounded-xl hover:bg-primary-600 hover:text-white transition-all duration-200 text-white">
+                                <i class="fab fa-github text-lg"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 glass-icon flex items-center justify-center rounded-xl hover:bg-primary-600 hover:text-white transition-all duration-200 text-white">
+                                <i class="fab fa-twitter text-lg"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 glass-icon flex items-center justify-center rounded-xl hover:bg-primary-600 hover:text-white transition-all duration-200 text-white">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600">
+                    Common questions about our services and process
+                </p>
+            </div>
+            <div class="space-y-4">
+                <div class="faq-item glass-card rounded-2xl overflow-hidden">
+                    <div class="faq-question w-full p-6 cursor-pointer flex justify-between items-center transition-colors duration-200 rounded-2xl">
+                        <h3 class="text-lg font-semibold text-gray-900">What is your typical project timeline?</h3>
+                        <i class="fas fa-chevron-down text-primary-600 transition-transform duration-200"></i>
+                    </div>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-gray-600 leading-relaxed">
+                            Project timelines vary depending on complexity, but most websites take 4-8 weeks from start to finish. We'll provide a detailed timeline during our initial consultation.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item glass-card rounded-2xl overflow-hidden">
+                    <div class="faq-question p-6 cursor-pointer flex justify-between items-center transition-colors duration-200">
+                        <h3 class="text-lg font-semibold text-gray-900">Do you provide ongoing support after launch?</h3>
+                        <i class="fas fa-chevron-down text-primary-600 transition-transform duration-200"></i>
+                    </div>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-gray-600 leading-relaxed">
+                            Yes! We offer various maintenance and support packages to keep your website running smoothly, secure, and up-to-date with the latest technologies.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item glass-card rounded-2xl overflow-hidden">
+                    <div class="faq-question p-6 cursor-pointer flex justify-between items-center transition-colors duration-200">
+                        <h3 class="text-lg font-semibold text-gray-900">What technologies do you use?</h3>
+                        <i class="fas fa-chevron-down text-primary-600 transition-transform duration-200"></i>
+                    </div>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-gray-600 leading-relaxed">
+                            We use modern, industry-standard technologies including HTML5, CSS3, JavaScript, React, Node.js, and various other frameworks depending on project requirements.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item glass-card rounded-2xl overflow-hidden">
+                    <div class="faq-question p-6 cursor-pointer flex justify-between items-center transition-colors duration-200">
+                        <h3 class="text-lg font-semibold text-gray-900">Do you work with clients internationally?</h3>
+                        <i class="fas fa-chevron-down text-primary-600 transition-transform duration-200"></i>
+                    </div>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-gray-600 leading-relaxed">
+                            Absolutely! We're a remote-first company and work with clients worldwide. We use modern collaboration tools to ensure smooth communication regardless of time zones.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <img src="img/3-removebg-preview.png" alt="Pixel Pulse Logo" class="h-56 w-56">
+                    </div>
+                    <p class="text-gray-400">Creating digital experiences that drive results.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-primary-400">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="projects.html" class="text-gray-400 hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-primary-400">Services</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">Custom Development</li>
+                        <li class="text-gray-400">Responsive Design</li>
+                        <li class="text-gray-400">Performance Optimization</li>
+                        <li class="text-gray-400">Maintenance & Support</li>
+                        <li class="text-gray-400">AI Automation</li>
+                        <li class="text-gray-400">Logo Design</li>
+                        <li class="text-gray-400">Ad Designs</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-primary-400">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Pixel Pulse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', function() {
+                    const isActive = item.classList.contains('active');
+                    // Close all FAQ items
+                    faqItems.forEach(faq => faq.classList.remove('active'));
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Hamburger menu functionality
+            const hamburger = document.querySelector('.hamburger');
+            const mobileDropdown = document.getElementById('mobile-dropdown');
+            if (hamburger && mobileDropdown) {
+                hamburger.addEventListener('click', () => {
+                    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                    hamburger.setAttribute('aria-expanded', !expanded);
+                    mobileDropdown.classList.toggle('opacity-0');
+                    mobileDropdown.classList.toggle('pointer-events-none');
+                });
+                // Close menu on link click
+                mobileDropdown.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.setAttribute('aria-expanded', 'false');
+                        mobileDropdown.classList.add('opacity-0');
+                        mobileDropdown.classList.add('pointer-events-none');
+                    });
+                });
+            }
+
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Get form data
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData);
+                // Log user info in a readable format
+                console.log('--- New Contact Form Submission ---');
+                console.log('Full Name:', data.name);
+                console.log('Email:', data.email);
+                console.log('Phone:', data.phone);
+                console.log('Company:', data.company);
+                console.log('Project Type:', data['project-type']);
+                console.log('Budget Range:', data.budget);
+                console.log('Message:', data.message);
+                // Show success message
+                alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+                contactForm.reset();
+            });
+        });
+    </script>
+</body>
+</html> 

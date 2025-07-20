@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Projects - Pixel Pulse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#2c5aa0',
+                            600: '#1e3f7a',
+                            700: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .pixel-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .animated-gradient-bg {
+            background: linear-gradient(270deg, #1e3a8a, #2563eb, #38bdf8, #0ea5e9, #1e3a8a);
+            background-size: 400% 400%;
+            animation: gradientRandomMove 16s ease-in-out infinite;
+            opacity: 0.22;
+        }
+        @keyframes gradientRandomMove {
+            0% { background-position: 0% 50%; }
+            15% { background-position: 30% 70%; }
+            30% { background-position: 70% 30%; }
+            45% { background-position: 100% 50%; }
+            60% { background-position: 70% 70%; }
+            75% { background-position: 30% 30%; }
+            100% { background-position: 0% 50%; }
+        }
+        .glass-navbar {
+            background: rgba(255,255,255,0.25);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border-radius: 0 0 1.5rem 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+        .glass-btn {
+            background: rgba(44, 90, 160, 0.18); /* blue tint */
+            box-shadow: 0 4px 24px 0 rgba(44, 90, 160, 0.10);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(44, 90, 160, 0.25);
+            transition: background 0.2s, box-shadow 0.2s, border 0.2s;
+        }
+        .glass-btn:hover, .glass-btn:focus {
+            background: rgba(44, 90, 160, 0.32);
+            box-shadow: 0 6px 32px 0 rgba(44, 90, 160, 0.18);
+            border: 1.5px solid rgba(44, 90, 160, 0.35);
+        }
+        .glass-card {
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+            backdrop-filter: blur(14px) saturate(180%);
+            -webkit-backdrop-filter: blur(14px) saturate(180%);
+            border: 1.5px solid rgba(255,255,255,0.18);
+        }
+        .glass-icon {
+            background: rgba(10, 20, 40, 0.22); /* very dark navy */
+            box-shadow: 0 4px 16px 0 rgba(10, 20, 40, 0.10);
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border: 1.5px solid rgba(10, 20, 40, 0.18);
+            border-radius: 1rem;
+        }
+        .glass-dropdown {
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1.5px solid rgba(255,255,255,0.18);
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+        .filter-btn.active {
+            background: linear-gradient(135deg, #2c5aa0, #1e3f7a);
+            color: white;
+        }
+        .project-card.glass-card:hover {
+            box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.18);
+            transform: translateY(-12px) scale(1.04);
+        }
+        .glass-tech {
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.08);
+            backdrop-filter: blur(8px) saturate(180%);
+            -webkit-backdrop-filter: blur(8px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.18);
+            transition: background 0.2s, box-shadow 0.2s, border 0.2s;
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-50">
+    <div class="animated-gradient-bg fixed inset-0 w-full h-full z-0"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-navbar border-b border-white/30" aria-label="Main navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <img src="img/1-removebg-preview.png" alt="Pixel Pulse Logo" class="h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 lg:h-72 lg:w-72 xl:h-80 xl:w-80">
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="nav-link glass-btn text-gray-700 hover:text-primary-600 font-medium px-5 py-2 rounded-xl shadow-md transition-all duration-200">Home</a>
+                        <a href="about.html" class="nav-link glass-btn text-gray-700 hover:text-primary-600 font-medium px-5 py-2 rounded-xl shadow-md transition-all duration-200">About</a>
+                        <a href="projects.html" class="nav-link glass-btn text-primary-600 font-medium border-b-2 border-primary-600 px-5 py-2 rounded-xl shadow-md transition-all duration-200">Projects</a>
+                        <a href="contact.html" class="nav-link glass-btn text-gray-700 hover:text-primary-600 font-medium px-5 py-2 rounded-xl shadow-md transition-all duration-200">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden flex items-center relative">
+                    <button class="hamburger text-gray-700 hover:text-primary-600 focus:outline-none p-3" aria-label="Open menu" aria-controls="mobile-dropdown" aria-expanded="false">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                    <div id="mobile-dropdown" class="absolute right-0 top-16 bg-white rounded-xl shadow-lg py-4 flex flex-col items-stretch space-y-2 text-lg font-semibold text-primary-700 opacity-0 pointer-events-none transition-all duration-200 z-50">
+                        <a href="index.html" class="nav-link px-6 py-3 rounded-xl">Home</a>
+                        <a href="about.html" class="nav-link px-6 py-3 rounded-xl">About</a>
+                        <a href="projects.html" class="nav-link px-6 py-3 rounded-xl">Projects</a>
+                        <a href="contact.html" class="nav-link px-6 py-3 rounded-xl">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Hero -->
+    <section class="pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">Our Projects</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Showcasing our latest work and digital innovations that drive real business results
+            </p>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+                <!-- Project 1 -->
+                <div class="project-card glass-card rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 overflow-hidden" data-category="web">
+                    <div class="relative h-64 bg-gradient-to-br from-primary-600 to-blue-500 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-white text-6xl"></i>
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 hover:opacity-100 transition-opacity duration-300 flex space-x-4">
+                                <a href="#" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition-all duration-200">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary-600 hover:bg-primary-600 hover:text-white transition-all duration-200">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Modern Business Website</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            A responsive corporate website with modern design and advanced functionality.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="glass-tech text-primary-600 text-sm font-medium rounded-full px-3 py-1">HTML5</span>
+                            <span class="glass-tech text-primary-600 text-sm font-medium rounded-full px-3 py-1">CSS3</span>
+                            <span class="glass-tech text-primary-600 text-sm font-medium rounded-full px-3 py-1">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-card rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 overflow-hidden" data-category="ecommerce">
+                    <div class="relative h-64 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+                        <i class="fas fa-shopping-cart text-white text-6xl"></i>
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 hover:opacity-100 transition-opacity duration-300 flex space-x-4">
+                                <a href="#" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-green-600 hover:bg-green-600 hover:text-white transition-all duration-200">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-green-600 hover:bg-green-600 hover:text-white transition-all duration-200">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">E-commerce Platform</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Full-featured online store with payment integration and inventory management.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="glass-tech text-green-600 text-sm font-medium rounded-full px-3 py-1">React</span>
+                            <span class="glass-tech text-green-600 text-sm font-medium rounded-full px-3 py-1">Node.js</span>
+                            <span class="glass-tech text-green-600 text-sm font-medium rounded-full px-3 py-1">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-card rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 overflow-hidden" data-category="design">
+                    <div class="relative h-64 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-palette text-white text-6xl"></i>
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 hover:opacity-100 transition-opacity duration-300 flex space-x-4">
+                                <a href="#" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-200">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-200">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Creative Agency Portfolio</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Stunning portfolio website with interactive animations and creative design elements.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="glass-tech text-purple-600 text-sm font-medium rounded-full px-3 py-1">Figma</span>
+                            <span class="glass-tech text-purple-600 text-sm font-medium rounded-full px-3 py-1">CSS3</span>
+                            <span class="glass-tech text-purple-600 text-sm font-medium rounded-full px-3 py-1">GSAP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card glass-card rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 overflow-hidden" data-category="web">
+                    <div class="relative h-64 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-white text-6xl"></i>
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 hover:opacity-100 transition-opacity duration-300 flex space-x-4">
+                                <a href="#" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-200">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-200">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Mobile-First Web App</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Progressive web application optimized for mobile devices with offline functionality.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="glass-tech text-blue-600 text-sm font-medium rounded-full px-3 py-1">PWA</span>
+                            <span class="glass-tech text-blue-600 text-sm font-medium rounded-full px-3 py-1">Vue.js</span>
+                            <span class="glass-tech text-blue-600 text-sm font-medium rounded-full px-3 py-1">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card glass-card rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 overflow-hidden" data-category="ecommerce">
+                    <div class="relative h-64 bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
+                        <i class="fas fa-store text-white text-6xl"></i>
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 hover:opacity-100 transition-opacity duration-300 flex space-x-4">
+                                <a href="#" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-orange-600 hover:bg-orange-600 hover:text-white transition-all duration-200">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-orange-600 hover:bg-orange-600 hover:text-white transition-all duration-200">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Restaurant Ordering System</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Online food ordering platform with real-time order tracking and payment processing.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="glass-tech text-orange-600 text-sm font-medium rounded-full px-3 py-1">Angular</span>
+                            <span class="glass-tech text-orange-600 text-sm font-medium rounded-full px-3 py-1">Express.js</span>
+                            <span class="glass-tech text-orange-600 text-sm font-medium rounded-full px-3 py-1">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card glass-card rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 overflow-hidden" data-category="design">
+                    <div class="relative h-64 bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center">
+                        <i class="fas fa-briefcase text-white text-6xl"></i>
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 hover:opacity-100 transition-opacity duration-300 flex space-x-4">
+                                <a href="#" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-600 hover:text-white transition-all duration-200">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-600 hover:text-white transition-all duration-200">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Professional Services Website</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Clean and professional website design for consulting services with lead generation.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="glass-tech text-gray-600 text-sm font-medium rounded-full px-3 py-1">WordPress</span>
+                            <span class="glass-tech text-gray-600 text-sm font-medium rounded-full px-3 py-1">PHP</span>
+                            <span class="glass-tech text-gray-600 text-sm font-medium rounded-full px-3 py-1">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Stats -->
+    <section class="py-20 glass-card rounded-2xl">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="p-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold mb-2 text-primary-700 countup" data-target="50">0</div>
+                    <div class="text-primary-600">Projects Completed</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2 text-primary-700 countup" data-target="30">0</div>
+                    <div class="text-primary-600">Happy Clients</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2 text-primary-700 countup" data-target="100">0</div>
+                    <div class="text-primary-600">Client Satisfaction</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2 text-primary-700 countup" data-target="24">0</div>
+                    <div class="text-primary-600">Support Available</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-white mb-6">Have a Project in Mind?</h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Let's discuss your ideas and create something amazing together.
+            </p>
+            <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 glass-btn text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200">
+                Start Your Project
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <img src="img/3-removebg-preview.png" alt="Pixel Pulse Logo" class="h-56 w-56">
+                    </div>
+                    <p class="text-gray-400">Creating digital experiences that drive results.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-primary-400">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="projects.html" class="text-gray-400 hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-primary-400">Services</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">Custom Development</li>
+                        <li class="text-gray-400">Responsive Design</li>
+                        <li class="text-gray-400">Performance Optimization</li>
+                        <li class="text-gray-400">Maintenance & Support</li>
+                        <li class="text-gray-400">AI Automation</li>
+                        <li class="text-gray-400">Logo Design</li>
+                        <li class="text-gray-400">Ad Designs</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-primary-400">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Pixel Pulse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Project filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        if (filter === 'all' || category === filter) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeIn 0.5s ease-in-out';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Hamburger menu functionality
+            const hamburger = document.querySelector('.hamburger');
+            const mobileDropdown = document.getElementById('mobile-dropdown');
+            if (hamburger && mobileDropdown) {
+                hamburger.addEventListener('click', () => {
+                    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                    hamburger.setAttribute('aria-expanded', !expanded);
+                    mobileDropdown.classList.toggle('opacity-0');
+                    mobileDropdown.classList.toggle('pointer-events-none');
+                });
+                // Close menu on link click
+                mobileDropdown.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.setAttribute('aria-expanded', 'false');
+                        mobileDropdown.classList.add('opacity-0');
+                        mobileDropdown.classList.add('pointer-events-none');
+                    });
+                });
+            }
+        });
+    </script>
+
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+    <script>
+// Count up animation for stats
+function animateCountUp(el, target, duration = 1500, suffix = '') {
+    let start = 0;
+    let startTime = null;
+    function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const value = Math.floor(progress * (target - start) + start);
+        el.textContent = value + suffix;
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        } else {
+            el.textContent = target + suffix;
+        }
+    }
+    requestAnimationFrame(step);
+}
+
+function handleCountUpOnView() {
+    const countups = document.querySelectorAll('.countup');
+    const options = { threshold: 0.5 };
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                if (!el.dataset.animated) {
+                    let target = parseInt(el.dataset.target, 10);
+                    let suffix = '';
+                    if (el.dataset.target === '100') suffix = '%';
+                    if (el.dataset.target === '24') suffix = '/7';
+                    animateCountUp(el, target, 1500, suffix);
+                    el.dataset.animated = 'true';
+                }
+            }
+        });
+    }, options);
+    countups.forEach(el => observer.observe(el));
+}
+document.addEventListener('DOMContentLoaded', handleCountUpOnView);
+</script>
+</body>
+</html> 
